@@ -1,0 +1,22 @@
+version: "3.3"
+
+services:
+  get_coefs:
+    image: 'get_coefs:latest'
+    container_name: 'get_coefs'
+    volumes:
+      - ./scp:/scp:rw
+    restart: always
+  read_coefs:
+    image: 'read_coefs:latest'
+    container_name: 'read_coefs'
+    volumes:
+      - ./scp:/scp:rw
+      - ./tmp:/tmp:rw
+    restart: always
+  send_coefs:
+    image: 'send_coefs:latest'
+    container_name: 'send_coefs'
+    volumes:
+      - ./scp:/scp:rw
+    restart: always

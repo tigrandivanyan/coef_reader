@@ -1,0 +1,182 @@
+/snap/docker/2746/lib/python3.6/site-packages/paramiko/transport.py:32: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography. The next release of cryptography (40.0) will be the last to support Python 3.6.
+  from cryptography.hazmat.backends import default_backend
+Killing send_coefs ... 
+Killing read_coefs ... 
+Killing get_coefs  ... 
+Killing get_coefs  ... done
+Killing send_coefs ... done
+Killing read_coefs ... done
+Deleted Containers:
+7c06169c7a45b70a67074f952fc868f370cbe0db6eebf92c8f96faac4be9662b
+a40d5b47ed86b44ac19da90e7498e171283c208615db4b218f2cbe195b9b0b29
+39d82f6fcac6e74dc90f06339dc2fd4ac5e6b5d4e7b796f85914b0fdc77780cd
+
+Deleted Networks:
+coef_reader_default
+
+Total reclaimed space: 98.3MB
+/snap/docker/2746/lib/python3.6/site-packages/paramiko/transport.py:32: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography. The next release of cryptography (40.0) will be the last to support Python 3.6.
+  from cryptography.hazmat.backends import default_backend
+Creating network "coef_reader_default" with the default driver
+Creating read_coefs ... 
+Creating send_coefs ... 
+Creating get_coefs  ... 
+Creating send_coefs ... done
+Creating read_coefs ... done
+Creating get_coefs  ... done
+/snap/docker/2746/lib/python3.6/site-packages/paramiko/transport.py:32: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography. The next release of cryptography (40.0) will be the last to support Python 3.6.
+  from cryptography.hazmat.backends import default_backend
+Killing get_coefs  ... 
+Killing read_coefs ... 
+Killing send_coefs ... 
+Killing send_coefs ... done
+Killing get_coefs  ... done
+Killing read_coefs ... done
+Deleted Containers:
+54be1b7001a1d818f5e62c29baa6c7f11d86353ea909c1c394c3cddcb6aa22d5
+6f01a67bac6707b4906850820787ac6ec597ab2c0d9252f54344dbea09ea074e
+45e2a27353dda29e449069224fdb8bfa4e54811669154910bef1d3802f7bcedb
+
+Deleted Networks:
+coef_reader_default
+
+Total reclaimed space: 98.3MB
+/snap/docker/2746/lib/python3.6/site-packages/paramiko/transport.py:32: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography. The next release of cryptography (40.0) will be the last to support Python 3.6.
+  from cryptography.hazmat.backends import default_backend
+Creating network "coef_reader_default" with the default driver
+Creating read_coefs ... 
+Creating send_coefs ... 
+Creating get_coefs  ... 
+Creating send_coefs ... done
+Creating get_coefs  ... done
+Creating read_coefs ... done
+/snap/docker/2746/lib/python3.6/site-packages/paramiko/transport.py:32: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography. The next release of cryptography (40.0) will be the last to support Python 3.6.
+  from cryptography.hazmat.backends import default_backend
+Killing get_coefs  ... 
+Killing send_coefs ... 
+Killing read_coefs ... 
+Killing get_coefs  ... done
+Killing send_coefs ... done
+Killing read_coefs ... done
+Deleted Containers:
+98ed12e11a1c81051d050ba86161a17281a61f97461f8aaae768057fba40a086
+62c7d4780755cdb78b853a6a1d55d016d82bac1e59b4acc04edac60512d28d42
+0aa009b351c895cf37d1189e4deee342d6da8dc7e1533377c41bc31d8a9c6e6e
+
+Deleted Networks:
+coef_reader_default
+
+Total reclaimed space: 98.3MB
+/snap/docker/2746/lib/python3.6/site-packages/paramiko/transport.py:32: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography. The next release of cryptography (40.0) will be the last to support Python 3.6.
+  from cryptography.hazmat.backends import default_backend
+Creating network "coef_reader_default" with the default driver
+Creating get_coefs ... 
+Creating read_coefs ... 
+Creating send_coefs ... 
+Creating send_coefs ... done
+Creating read_coefs ... done
+Creating get_coefs  ... done
+/snap/docker/2746/lib/python3.6/site-packages/paramiko/transport.py:32: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography. The next release of cryptography (40.0) will be the last to support Python 3.6.
+  from cryptography.hazmat.backends import default_backend
+Killing get_coefs  ... 
+Killing send_coefs ... 
+Killing read_coefs ... 
+Killing send_coefs ... done
+Killing get_coefs  ... done
+Killing read_coefs ... done
+Deleted Containers:
+09b6243ef9bc2d4ba5cf5e429593619ab0fcd1863c94efd401f5453c841bb0e0
+53562a237421c9b79a72c3dbf5a8a9c3fa4f12939e917b7633ddb7309938e9e5
+dbaa65b294cb8194bc71463edf35524f504db6254835317c588ad8f58a470a03
+
+Deleted Networks:
+coef_reader_default
+
+Total reclaimed space: 98.3MB
+/snap/docker/2746/lib/python3.6/site-packages/paramiko/transport.py:32: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography. The next release of cryptography (40.0) will be the last to support Python 3.6.
+  from cryptography.hazmat.backends import default_backend
+Creating network "coef_reader_default" with the default driver
+Creating read_coefs ... 
+Creating get_coefs  ... 
+Creating send_coefs ... 
+Creating read_coefs ... done
+Creating send_coefs ... done
+Creating get_coefs  ... done
+/snap/docker/2746/lib/python3.6/site-packages/paramiko/transport.py:32: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography. The next release of cryptography (40.0) will be the last to support Python 3.6.
+  from cryptography.hazmat.backends import default_backend
+Killing get_coefs  ... 
+Killing send_coefs ... 
+Killing read_coefs ... 
+Killing get_coefs  ... done
+Killing send_coefs ... done
+Killing read_coefs ... done
+Deleted Containers:
+8a1c5b03807acb473855991a11a002e6e4a4130405b02b97ba928284b20e5ad7
+5d5853826168a82a401a765e302d33de25d3ac164bcc4ca198403f2389afb707
+55f6fb4b3987aed2280bc282f1a02dd3d5ef54d146a642fcc3e0e1a3ea0e26d1
+
+Deleted Networks:
+coef_reader_default
+
+Total reclaimed space: 98.3MB
+/snap/docker/2746/lib/python3.6/site-packages/paramiko/transport.py:32: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography. The next release of cryptography (40.0) will be the last to support Python 3.6.
+  from cryptography.hazmat.backends import default_backend
+Creating network "coef_reader_default" with the default driver
+Creating get_coefs ... 
+Creating read_coefs ... 
+Creating send_coefs ... 
+Creating read_coefs ... done
+Creating get_coefs  ... done
+Creating send_coefs ... done
+/snap/docker/2746/lib/python3.6/site-packages/paramiko/transport.py:32: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography. The next release of cryptography (40.0) will be the last to support Python 3.6.
+  from cryptography.hazmat.backends import default_backend
+Killing send_coefs ... 
+Killing read_coefs ... 
+Killing get_coefs  ... 
+Killing send_coefs ... done
+Killing get_coefs  ... done
+Killing read_coefs ... done
+Deleted Containers:
+3b7134e5e75085e74e75090cf3df08eedb5fc1ef08f7d3a8f7585f2fc0b045b8
+4d0e7d746e9156086f97636432a6db18d5c5c5186968dc519b7a03bd080ad120
+708867fbface6fa64f1938f39bab04d78754044c930f9e4b42f17e9b81738003
+
+Deleted Networks:
+coef_reader_default
+
+Total reclaimed space: 98.3MB
+/snap/docker/2746/lib/python3.6/site-packages/paramiko/transport.py:32: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography. The next release of cryptography (40.0) will be the last to support Python 3.6.
+  from cryptography.hazmat.backends import default_backend
+Creating network "coef_reader_default" with the default driver
+Creating send_coefs ... 
+Creating read_coefs ... 
+Creating get_coefs  ... 
+Creating get_coefs  ... done
+Creating read_coefs ... done
+Creating send_coefs ... done
+/snap/docker/2746/lib/python3.6/site-packages/paramiko/transport.py:32: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography. The next release of cryptography (40.0) will be the last to support Python 3.6.
+  from cryptography.hazmat.backends import default_backend
+Killing get_coefs  ... 
+Killing send_coefs ... 
+Killing read_coefs ... 
+Killing send_coefs ... done
+Killing get_coefs  ... done
+Killing read_coefs ... done
+Deleted Containers:
+38d365a7143f456d4e8e2b26986f68394a7f96235d3bf0a60aa134ab00e870be
+bc8b4e65b180af301ace90aab1ec78d4933a2bb407b5ec2a772416707e3a5f71
+78f3de887f95e9b9c093f0d021d376ac75ef9c8979caf991ac4b8cfd5ff02b2c
+
+Deleted Networks:
+coef_reader_default
+
+Total reclaimed space: 98.3MB
+/snap/docker/2746/lib/python3.6/site-packages/paramiko/transport.py:32: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography. The next release of cryptography (40.0) will be the last to support Python 3.6.
+  from cryptography.hazmat.backends import default_backend
+Creating network "coef_reader_default" with the default driver
+Creating send_coefs ... 
+Creating read_coefs ... 
+Creating get_coefs  ... 
+Creating send_coefs ... done
+Creating read_coefs ... done
+Creating get_coefs  ... done
