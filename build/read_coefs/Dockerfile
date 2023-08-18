@@ -14,7 +14,7 @@ COPY requirements.txt requirements.txt
 
 # Install the pytesseract Python package
 RUN pip3 install --no-cache-dir -r requirements.txt
-
+RUN pip3 install --force-reinstall Pillow==9.5
 # Copy the rest of the application code into the container
 COPY . .
 
