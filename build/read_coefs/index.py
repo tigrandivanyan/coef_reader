@@ -17,17 +17,17 @@ def check(name):
 # final
 def coefCrop(capture, no):
     if no == "1":
-        return capture[433:553, 445:715]
+        return capture[429:487, 458:574]
     elif no == "2":
-        return capture[421:551, 735:1005]
+        return capture[437:479, 709:809]
     elif no == "3":
-        return capture[417:547, 1035:1305]
+        return capture[439:480, 944:1043]
     elif no == "4":
-        return capture[415:545, 1330:1600]
+        return capture[442:480, 1181:1282]
     elif no == "5":
-        return capture[409:539, 1630:1900]
+        return capture[442:480, 1415:1519]
     elif no == "6":
-        return capture[406:536, 1930:2200]
+        return capture[435:481, 1647:1759]
     else:
         return capture
     
@@ -53,7 +53,7 @@ def getIndexByTime(initial, time):
             startTime = time - datetime.timedelta(minutes=1)
             return int((startTime - startTimeInitial).total_seconds() / 60) / 2
 
-initialTime = datetime.datetime.strptime("2023-05-12-12-20-16", '%Y-%m-%d-%H-%M-%S')
+initialTime = datetime.datetime.strptime("2023-07-17-11-06-40", '%Y-%m-%d-%H-%M-%S')
         
 while True:
     current_index = int(getIndexByTime(initialTime, datetime.datetime.now()))
