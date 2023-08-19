@@ -48,7 +48,7 @@ def getIndexByTime(initial, time):
             startTime = time - datetime.timedelta(minutes=1)
             return int((startTime - startTimeInitial).total_seconds() / 60) / 2
 
-initialTime = datetime.datetime.strptime("2023-05-12-12-20-16", '%Y-%m-%d-%H-%M-%S')
+initialTime = datetime.datetime.strptime("2023-07-17-11-06-40", '%Y-%m-%d-%H-%M-%S')
 print(int(getIndexByTime(initialTime, datetime.datetime.now())))
 
 while True:
