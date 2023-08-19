@@ -36,8 +36,9 @@ def read_image(race, capture_path):
             cv2.imwrite(f'../tmp/{i}.jpg', coefCrop(capture, str(i)))
 
         img_fns = sorted(glob('../tmp/*'))
-        for img in img_fns:
-            coefText+=":"
+        reds = []
+        greens = []
+        for index, img in enumerate(img_fns):
             image = cv2.imread(img)
 
             indexed_image = image
@@ -47,7 +48,6 @@ def read_image(race, capture_path):
             blue = average_color[2]
 
             brightness = red + green + blue
-
 
             # Convert to HSV color space
             hsv_image = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
@@ -69,19 +69,70 @@ def read_image(race, capture_path):
             average_blue = np.mean(remaining_pixels[:, 0])
 
             if average_red > average_green * 1.4 and average_red > average_blue * 1.4:
-                coefText += "L"
+                reds.append([index, average_red - average_green + average_red - average_blue])
             elif(average_green > average_blue and average_green > average_red):
-                coefText += "H"
+                greens.append([index, average_green - average_red + average_green - average_blue])
+
+        maxRed = 0
+        maxRedIndex = -1
+        for e in reds:
+            index = e[0]
+            value = e[1]
+            if value > maxRed:
+                maxRed = value
+                maxRedIndex = index
+        
+        lowest = maxRedIndex
+
+
+        maxGreen = 0
+        maxGreenIndex = -1
+        for e in greens:
+            index = e[0]
+            value = e[1]
+            if value > maxGreen:
+                maxGreen = value
+                maxGreenIndex = index
+        
+        highest = maxGreenIndex
+
+        for index, img in enumerate(img_fns):
+            coefText+=":"
+
+            if index == highest:
+                coefText+="H"
+            elif index == lowest:
+                coefText+="L"
             else:
+                image = cv2.imread(img)
+
                 indexed_image = image
                 average_color = np.mean(indexed_image, axis=(0, 1))[::-1]
                 red = average_color[0]
                 green = average_color[1]
                 blue = average_color[2]
 
-                print(img)
-                print(red + green + blue)
-                print(average_red + average_green + average_blue)
+                brightness = red + green + blue
+
+
+                # Convert to HSV color space
+                hsv_image = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
+
+                # Define a threshold for the value channel
+                brightness_threshold = brightness / 2  # Adjust this threshold value as needed
+
+                # Create a mask to filter out dark pixels
+                mask = hsv_image[:, :, 2] > brightness_threshold
+
+                # Apply the mask to the original image
+                filtered_image = image.copy()
+                filtered_image[~mask] = 0
+
+                # Calculate the average RGB values of the remaining pixels
+                remaining_pixels = filtered_image[mask]
+                average_red = np.mean(remaining_pixels[:, 2])
+                average_green = np.mean(remaining_pixels[:, 1])
+                average_blue = np.mean(remaining_pixels[:, 0])
 
                 brightness = average_red + average_green + average_blue
                 threshVale = int(brightness / 2.3)
