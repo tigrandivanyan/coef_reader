@@ -33,7 +33,7 @@ initialTime = datetime.datetime.strptime("2023-07-17-11-06-40", '%Y-%m-%d-%H-%M-
 while True:
     current_index = int(getIndexByTime(initialTime, datetime.datetime.now()))
     scp = sorted(next(os.walk('../scp/'))[1])
-    # scp = [s for s in scp if 0 <= int(s) <= 1500]
+    scp = [s for s in scp if current_index - 10 <= int(s) <= current_index + 10]
     print(scp)
     for i, race in enumerate(scp):
         if int(race) > 1:
