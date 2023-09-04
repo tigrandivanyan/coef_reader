@@ -9,17 +9,17 @@ reader = easyocr.Reader(['en'], gpu = True)
 def coefCrop(capture, no, index):
     if index == 0:
         if no == "1":
-            return capture[420:496, 451:600]
+            return capture[430:506, 451:600]
         elif no == "2":
-            return capture[422:493, 682:840]
+            return capture[432:503, 682:840]
         elif no == "3":
-            return capture[423:489, 922:1082]
+            return capture[433:499, 922:1082]
         elif no == "4":
-            return capture[423:489, 1153:1315]
+            return capture[433:499, 1153:1315]
         elif no == "5":
-            return capture[424:488, 1381:1557]
+            return capture[434:498, 1381:1557]
         elif no == "6":
-            return capture[423:487, 1620:1789]
+            return capture[433:497, 1620:1789]
         else:
             return capture
     if index == 1:
