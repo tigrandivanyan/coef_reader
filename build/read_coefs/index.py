@@ -47,12 +47,16 @@ while True:
                     try:
                         with open(f'../scp/{race}/text.txt') as f:
                             lines = f.readlines()
-                        coefs_in_lines = list(filter(lambda line: line.__contains__("coefs"), lines))
+                        coefs_in_lines = list(filter(lambda line: line.__contains__("coefs&:"), lines))
                         if not len(coefs_in_lines) >= len(coefs):
-                            read_image(race, capture_path)
+                            read_image(race, capture_path, 0)
+                            read_image(race, capture_path, 1)
+                            read_image(race, capture_path, 2)
                     except Exception as e:
                         print(e)
-                        read_image(race, capture_path)
+                        read_image(race, capture_path, 0)
+                        read_image(race, capture_path, 1)
+                        read_image(race, capture_path, 2)
 
         scp = sorted(next(os.walk('../scp/'))[1])
     time.sleep(10)

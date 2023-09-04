@@ -6,34 +6,65 @@ import numpy as np
 reader = easyocr.Reader(['en'], gpu = True)
 
 
-def coefCrop(capture, no):
-    if no == "1":
-        return capture[420:496, 451:600]
-    elif no == "2":
-        return capture[422:493, 682:840]
-    elif no == "3":
-        return capture[423:489, 922:1082]
-    elif no == "4":
-        return capture[423:489, 1153:1315]
-    elif no == "5":
-        return capture[424:488, 1381:1557]
-    elif no == "6":
-        return capture[423:487, 1620:1789]
-    else:
-        return capture
+def coefCrop(capture, no, index):
+    if index == 0:
+        if no == "1":
+            return capture[420:496, 451:600]
+        elif no == "2":
+            return capture[422:493, 682:840]
+        elif no == "3":
+            return capture[423:489, 922:1082]
+        elif no == "4":
+            return capture[423:489, 1153:1315]
+        elif no == "5":
+            return capture[424:488, 1381:1557]
+        elif no == "6":
+            return capture[423:487, 1620:1789]
+        else:
+            return capture
+    if index == 1:
+        if no == "1":
+            return capture[760:826, 451:600]
+        elif no == "2":
+            return capture[762:823, 682:840]
+        elif no == "3":
+            return capture[763:829, 922:1082]
+        elif no == "4":
+            return capture[763:829, 1153:1315]
+        elif no == "5":
+            return capture[764:828, 1381:1557]
+        elif no == "6":
+            return capture[763:827, 1620:1789]
+        else:
+            return capture
+    if index == 2:
+        if no == "1":
+            return capture[1070:1136, 451:600]
+        elif no == "2":
+            return capture[1072:1133, 682:840]
+        elif no == "3":
+            return capture[1073:1139, 922:1082]
+        elif no == "4":
+            return capture[1073:1139, 1153:1315]
+        elif no == "5":
+            return capture[1074:1138, 1381:1557]
+        elif no == "6":
+            return capture[1073:1137, 1620:1789]
+        else:
+            return capture
     
 def check(name):
     if(not os.path.exists(name)):
         path = os.path.join(name)
         os.mkdir(path)
 
-def read_image(race, capture_path):
+def read_image(race, capture_path, indexik):
     try:
         capture = cv2.imread(f'../scp/{race}/{capture_path}')
         coefText = ''
         check('../tmp/')
         for i in range(1, 7):
-            cv2.imwrite(f'../tmp/{i}.jpg', coefCrop(capture, str(i)))
+            cv2.imwrite(f'../tmp/{i}.jpg', coefCrop(capture, str(i), indexik))
 
         img_fns = sorted(glob('../tmp/*'))
         reds = []
@@ -135,7 +166,7 @@ def read_image(race, capture_path):
                 average_blue = np.mean(remaining_pixels[:, 0])
 
                 brightness = average_red + average_green + average_blue
-                threshVale = int(brightness / 2.3)
+                threshVale = int(brightness / 3)
 
                 if threshVale > 200:
                     threshVale = 200
@@ -158,6 +189,11 @@ def read_image(race, capture_path):
 
         print(coefText)
         with open(f'../scp/{race}/text.txt', 'a') as the_file:
-            the_file.write(f'coefs&{coefText}\n')
+            if indexik == 0:
+                the_file.write(f'coefs&{coefText}\n')
+            if indexik == 1:
+                the_file.write(f'coefs_mid&{coefText}\n')
+            if indexik == 2:
+                the_file.write(f'coefs_last&{coefText}\n')
     except Exception as e:
         print(e)
