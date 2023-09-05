@@ -22,20 +22,31 @@ while True:
         print(race)
         done = [f for f in listdir(f'../scp/{race}/') if isfile(join(f'../scp/{race}/', f)) and f.split(".")[1] == "txt"]
         imgs = [f for f in listdir(f'../scp/{race}/') if isfile(join(f'../scp/{race}/', f)) and f.split(".")[1] == "jpg"]
+        print(done)
+        with open(f'../scp/{race}/text.txt') as f:
+            lines = f.readlines()
         
-        if len(done) == 1:
-            with open(f'../scp/{race}/text.txt') as f:
-                lines = f.readlines()
-            coefs_in_lines = list(filter(lambda line: line.__contains__("coefs"), lines))
-            if len(coefs_in_lines) >= len(imgs):
+        done_lines = ''
+
+        try:
+            with open(f'../scp/{race}/done.txt') as f:
+                done_lines = f.readlines()
+        except:
+            print('no done.txt')
+
+
+        coefs_in_lines = list(filter(lambda line: line.__contains__("coefs"), lines))
+        if len(coefs_in_lines) >= len(imgs) or not ''.join(lines) == ''.join(done_lines):
+            try:
+                scp.put(f'../scp/{race}/text.txt', recursive=True, remote_path=f'/!web/fortuna-ai/races/{race}/coefs/')
                 try:
-                    scp.put(f'../scp/{race}/text.txt', recursive=True, remote_path=f'/!web/fortuna-ai/races/{race}/coefs/')
-                    with open(f'../scp/{race}/done.txt', 'a') as the_file:
-                        the_file.write('sent')
-                except Exception as e:
-                    print(e)
-            else:
-                print('still reading image')
+                    os.unlink(f'../scp/{race}/done.txt')
+                except:
+                    print('no done.txt')
+                with open(f'../scp/{race}/done.txt', 'a') as the_file:
+                    the_file.write(''.join(lines))
+            except Exception as e:
+                print(e)
         else:
-            print("already")
+            print('still reading image')
     time.sleep(1)
