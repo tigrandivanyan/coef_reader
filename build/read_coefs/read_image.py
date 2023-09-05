@@ -53,9 +53,8 @@ def coefCrop(capture, no, index):
         else:
             return capture
         
-def read_coefik(img, divider, capture, indexik):
-    for i in range(1, 7):
-        cv2.imwrite(f'../tmp/{i}.jpg', coefCrop(capture, str(i), indexik))
+def read_coefik(img, divider, capture, indexik, small_image_index, blur):
+    cv2.imwrite(f'../tmp/{small_image_index + 1}.jpg', coefCrop(capture, str(small_image_index + 1), indexik))
     image = cv2.imread(img)
 
     indexed_image = image
@@ -97,12 +96,14 @@ def read_coefik(img, divider, capture, indexik):
     _, coef_crop = cv2.threshold(coef_crop, threshVale, 255, cv2.THRESH_BINARY)
 
     # Apply Gaussian blur
-    coef_crop = cv2.GaussianBlur(coef_crop, (5, 5), 0)
+    if blur:
+        coef_crop = cv2.GaussianBlur(coef_crop, (5, 5), 0)
 
     # Apply histogram equalization for monotonicity
     coef_crop = cv2.equalizeHist(coef_crop)
-
+    print(divider, img)
     cv2.imwrite(img, coef_crop)
+
 
     return reader.readtext(img)[0][1]
 
@@ -190,13 +191,22 @@ def read_image(race, capture_path, indexik):
                 coefText+="L"
             else:
                 print('0')
-                coefik_text = read_coefik(img, 2, capture, indexik)
+                coefik_text = read_coefik(img, 2, capture, indexik, index, True)
                 if not ',' in coefik_text and not '.' in coefik_text:
                     print('1')
-                    coefik_text = read_coefik(img, 2.5, capture, indexik)
+                    coefik_text = read_coefik(img, 2.5, capture, indexik, index, True)
                     if not ',' in coefik_text and not '.' in coefik_text:
                         print('3')
-                        coefik_text = read_coefik(img, 3, capture, indexik)
+                        coefik_text = read_coefik(img, 3, capture, indexik, index, True)
+                        if not ',' in coefik_text and not '.' in coefik_text:
+                            print('4')
+                            coefik_text = read_coefik(img, 2, capture, indexik, index, False)
+                            if not ',' in coefik_text and not '.' in coefik_text:
+                                print('5')
+                                coefik_text = read_coefik(img, 2.5, capture, indexik, index, False)
+                                if not ',' in coefik_text and not '.' in coefik_text:
+                                    print('6')
+                                    coefik_text = read_coefik(img, 3, capture, indexik, index, False)
 
                 try:
                     coefText += coefik_text
