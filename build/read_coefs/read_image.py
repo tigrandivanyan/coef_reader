@@ -52,6 +52,60 @@ def coefCrop(capture, no, index):
             return capture[1073:1137, 1620:1789]
         else:
             return capture
+        
+def read_coefik(img, divider, capture, indexik):
+    for i in range(1, 7):
+        cv2.imwrite(f'../tmp/{i}.jpg', coefCrop(capture, str(i), indexik))
+    image = cv2.imread(img)
+
+    indexed_image = image
+    average_color = np.mean(indexed_image, axis=(0, 1))[::-1]
+    red = average_color[0]
+    green = average_color[1]
+    blue = average_color[2]
+
+    brightness = red + green + blue
+
+
+    # Convert to HSV color space
+    hsv_image = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
+
+    # Define a threshold for the value channel
+    brightness_threshold = brightness / 2  # Adjust this threshold value as needed
+
+    # Create a mask to filter out dark pixels
+    mask = hsv_image[:, :, 2] > brightness_threshold
+
+    # Apply the mask to the original image
+    filtered_image = image.copy()
+    filtered_image[~mask] = 0
+
+    # Calculate the average RGB values of the remaining pixels
+    remaining_pixels = filtered_image[mask]
+    average_red = np.mean(remaining_pixels[:, 2])
+    average_green = np.mean(remaining_pixels[:, 1])
+    average_blue = np.mean(remaining_pixels[:, 0])
+
+    brightness = average_red + average_green + average_blue
+    threshVale = int(brightness / divider)
+
+    if threshVale > 200:
+        threshVale = 200
+    
+    # Convert to grayscale
+    coef_crop = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+    _, coef_crop = cv2.threshold(coef_crop, threshVale, 255, cv2.THRESH_BINARY)
+
+    # Apply Gaussian blur
+    coef_crop = cv2.GaussianBlur(coef_crop, (5, 5), 0)
+
+    # Apply histogram equalization for monotonicity
+    coef_crop = cv2.equalizeHist(coef_crop)
+
+    cv2.imwrite(img, coef_crop)
+
+    return reader.readtext(img)[0][1]
+
     
 def check(name):
     if(not os.path.exists(name)):
@@ -135,55 +189,17 @@ def read_image(race, capture_path, indexik):
             elif index == lowest:
                 coefText+="L"
             else:
-                image = cv2.imread(img)
+                print('0')
+                coefik_text = read_coefik(img, 2, capture, indexik)
+                if not ',' in coefik_text and not '.' in coefik_text:
+                    print('1')
+                    coefik_text = read_coefik(img, 2.5, capture, indexik)
+                    if not ',' in coefik_text and not '.' in coefik_text:
+                        print('3')
+                        coefik_text = read_coefik(img, 3, capture, indexik)
 
-                indexed_image = image
-                average_color = np.mean(indexed_image, axis=(0, 1))[::-1]
-                red = average_color[0]
-                green = average_color[1]
-                blue = average_color[2]
-
-                brightness = red + green + blue
-
-
-                # Convert to HSV color space
-                hsv_image = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
-
-                # Define a threshold for the value channel
-                brightness_threshold = brightness / 2  # Adjust this threshold value as needed
-
-                # Create a mask to filter out dark pixels
-                mask = hsv_image[:, :, 2] > brightness_threshold
-
-                # Apply the mask to the original image
-                filtered_image = image.copy()
-                filtered_image[~mask] = 0
-
-                # Calculate the average RGB values of the remaining pixels
-                remaining_pixels = filtered_image[mask]
-                average_red = np.mean(remaining_pixels[:, 2])
-                average_green = np.mean(remaining_pixels[:, 1])
-                average_blue = np.mean(remaining_pixels[:, 0])
-
-                brightness = average_red + average_green + average_blue
-                threshVale = int(brightness / 3)
-
-                if threshVale > 200:
-                    threshVale = 200
-                
-                # Convert to grayscale
-                coef_crop = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-                _, coef_crop = cv2.threshold(coef_crop, threshVale, 255, cv2.THRESH_BINARY)
-
-                # Apply Gaussian blur
-                coef_crop = cv2.GaussianBlur(coef_crop, (5, 5), 0)
-
-                # Apply histogram equalization for monotonicity
-                coef_crop = cv2.equalizeHist(coef_crop)
-
-                cv2.imwrite(img, coef_crop)
                 try:
-                    coefText += reader.readtext(img)[0][1]
+                    coefText += coefik_text
                 except:
                     print('err')
 
