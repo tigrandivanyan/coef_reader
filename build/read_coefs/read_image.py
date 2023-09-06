@@ -56,7 +56,6 @@ def coefCrop(capture, no, index):
 def read_coefik(img, divider, capture, indexik, small_image_index, blur):
     cv2.imwrite(f'../tmp/{small_image_index + 1}.jpg', coefCrop(capture, str(small_image_index + 1), indexik))
     image = cv2.imread(img)
-
     indexed_image = image
     average_color = np.mean(indexed_image, axis=(0, 1))[::-1]
     red = average_color[0]
@@ -101,11 +100,17 @@ def read_coefik(img, divider, capture, indexik, small_image_index, blur):
 
     # Apply histogram equalization for monotonicity
     coef_crop = cv2.equalizeHist(coef_crop)
-    print(divider, img)
     cv2.imwrite(img, coef_crop)
 
+    readed_text = ''
 
-    return reader.readtext(img)[0][1]
+    try:
+        readed_text = reader.readtext(img)[0][1]
+    except:
+        print('no text read')
+
+
+    return readed_text
 
     
 def check(name):
