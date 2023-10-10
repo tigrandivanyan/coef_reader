@@ -155,12 +155,12 @@ async def read_image(race, capture_path):
             else:
                 variants = []
                 print("Strating varitant addition", img)
-                variants.append(read_coefik(img, 2, capture, race, True))
-                variants.append(read_coefik(img, 2.5, capture, race, True))
-                variants.append(read_coefik(img, 3, capture, race, True))
-                variants.append(read_coefik(img, 2, capture, race, False))
-                variants.append(read_coefik(img, 2.5, capture, race, False))
-                variants.append(read_coefik(img, 3, capture, race, False))
+                variants.append(read_coefik(img, 2, capture, race, True).replace(":", ""))
+                variants.append(read_coefik(img, 2.5, capture, race, True).replace(":", ""))
+                variants.append(read_coefik(img, 3, capture, race, True).replace(":", ""))
+                variants.append(read_coefik(img, 2, capture, race, False).replace(":", ""))
+                variants.append(read_coefik(img, 2.5, capture, race, False).replace(":", ""))
+                variants.append(read_coefik(img, 3, capture, race, False).replace(":", ""))
                 print("Finshing varitant addition", img)
                 try:
                     coefText += "$$".join(variants)
